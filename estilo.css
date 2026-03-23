@@ -1,99 +1,163 @@
 body {
   font-family: Arial, sans-serif;
-  background: #fffdcc; 
-  color: #fffdcc;        /* 👈 importante para que se vea el texto */
+  background: #0d0d0d;
+  color: white;
   text-align: center;
+  margin: 0;
 }
 
 h1 {
   margin: 20px;
+  color: #1e90ff;
 }
 
 #buscador {
-  padding: 10px;
+  padding: 12px;
   width: 60%;
-  margin-bottom: 20px;
-  border-radius: 5px;
+  margin-bottom: 25px;
+  border-radius: 8px;
   border: none;
+  background: #1a1a1a;
+  color: white;
 }
 
-/* GRILLA */
+
 #contenedor {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 25px;
   padding: 30px;
-  max-width: 1200px;
-  margin: auto;
 }
 
-/* TARJETAS */
+
 .card {
-  background: #1e1e1e;
+  perspective: 1000px;
+}
+
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
   border-radius: 12px;
   overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.3s, box-shadow 0.3s;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 
-.card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+.card-front {
+  background: #111;
 }
 
-.card img {
+
+.card-img {
+  height: 220px;
+}
+
+.card-img img {
   width: 100%;
-  height: 160px;
+  height: 100%;
   object-fit: cover;
+  object-position: top center;
 }
 
-.card h2 {
-  font-size: 18px;
-  margin: 10px;
-}
 
-.card em {
-  color: #ccc;
-  font-size: 13px;
-  margin: 0 10px;
+.card-content {
+  padding: 10px;
 }
 
 .descripcion {
   font-size: 13px;
-  margin: 10px;
   color: #ccc;
 }
 
-.card p {
-  margin: 0 10px 10px;
+
+.card-back {
+  background: #111;
+  transform: rotateY(180deg);
+  padding: 15px;
+  text-align: left;
+  overflow-y: auto;
 }
 
-/* MODAL */
-.modal {
-  display: none;
+
+.stat {
+  margin: 10px 0;
+}
+
+.bar {
+  width: 100%;
+  height: 8px;
+  background: #333;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  width: 0;
+  transition: width 0.8s ease;
+}
+
+
+.marvel-fill {
+  background: #ff2d2d;
+}
+
+.dc-fill {
+  background: #1e90ff;
+}
+
+
+.card.focused .fill.active {
+  width: var(--valor);
+}
+
+
+.overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background: rgba(0,0,0,0.8);
+  z-index: 5;
+  display: none;
 }
 
-.modal-content {
-  background: #222; 
-  margin: 10% auto;
-  padding: 20px;
-  width: 60%;
-  border-radius: 10px;
-  text-align: left;
+.overlay.active {
+  display: block;
 }
 
-#cerrar {
-  float: right;
-  font-size: 24px;
-  cursor: pointer;
+
+.card.focused {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  width: 340px;
+}
+
+
+.card.focused.marvel {
+  box-shadow: 0 0 40px rgba(255, 45, 45, 0.8);
+}
+
+.card.focused.dc {
+  box-shadow: 0 0 40px rgba(30, 144, 255, 0.8);
 }
