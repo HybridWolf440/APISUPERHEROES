@@ -1,0 +1,99 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #fffdcc; 
+  color: #fffdcc;        /* 👈 importante para que se vea el texto */
+  text-align: center;
+}
+
+h1 {
+  margin: 20px;
+}
+
+#buscador {
+  padding: 10px;
+  width: 60%;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: none;
+}
+
+/* GRILLA */
+#contenedor {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 25px;
+  padding: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* TARJETAS */
+.card {
+  background: #1e1e1e;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+}
+
+.card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.card h2 {
+  font-size: 18px;
+  margin: 10px;
+}
+
+.card em {
+  color: #ccc;
+  font-size: 13px;
+  margin: 0 10px;
+}
+
+.descripcion {
+  font-size: 13px;
+  margin: 10px;
+  color: #ccc;
+}
+
+.card p {
+  margin: 0 10px 10px;
+}
+
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+}
+
+.modal-content {
+  background: #222; 
+  margin: 10% auto;
+  padding: 20px;
+  width: 60%;
+  border-radius: 10px;
+  text-align: left;
+}
+
+#cerrar {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+}
