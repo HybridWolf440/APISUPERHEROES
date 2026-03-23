@@ -2,29 +2,18 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Studio Ghibli App</title>
+  <title>Superhéroes</title>
   <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
 
-  <h1>Studio Ghibli</h1>
+  <h1>Superhéroes</h1>
 
-  <input type="text" id="buscador" placeholder="Buscar película...">
+  <input type="text" id="buscador" placeholder="Buscar héroe...">
 
   <div id="contenedor"></div>
 
-  <!-- modal -->
-  <div id="modal" class="modal">
-    <div class="modal-content">
-      <span id="cerrar">&times;</span>
-      <h2 id="titulo"></h2>
-      <p><strong>Título original:</strong> <span id="tituloOriginal"></span></p>
-      <p><strong>Director:</strong> <span id="director"></span></p>
-      <p><strong>Año:</strong> <span id="anio"></span></p>
-      <p><strong>Score:</strong> <span id="score"></span></p>
-      <p id="descripcion"></p>
-    </div>
-  </div>
+  <div id="overlay" class="overlay"></div>
 
   <script src="script.js"></script>
 </body>
